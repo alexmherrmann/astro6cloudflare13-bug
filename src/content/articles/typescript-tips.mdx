@@ -1,0 +1,43 @@
+---
+title: 'TypeScript Tips for Better Code (THIS ONE IS BROKEN)'
+description: 'Learn some useful TypeScript patterns with code examples'
+pubDate: 'Jan 20 2026'
+---
+
+import { Code } from 'astro:components';
+
+# TypeScript Tips
+
+Here are some useful TypeScript patterns that can improve your code quality.
+
+## Type Guards
+
+Type guards help narrow down types in conditional blocks:
+
+<Code code={`function isString(value: unknown): value is string {
+  return typeof value === 'string';
+}
+
+function processValue(value: unknown) {
+  if (isString(value)) {
+    // TypeScript knows value is a string here
+    console.log(value.toUpperCase());
+  }
+}`} lang="typescript" />
+
+## Generic Constraints
+
+Use constraints to limit what types can be passed to generics:
+
+<Code code={`interface HasLength {
+  length: number;
+}
+
+function logLength<T extends HasLength>(item: T): void {
+  console.log(item.length);
+}
+
+logLength("hello");     // works - string has length
+logLength([1, 2, 3]);   // works - array has length`} lang="typescript" />
+
+These patterns will help you write more type-safe code!
