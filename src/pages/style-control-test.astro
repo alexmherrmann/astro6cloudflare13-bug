@@ -1,0 +1,17 @@
+---
+import StyledCard from '../components/StyledCard.astro';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Style Control Test</title>
+  </head>
+  <body>
+    <h1>Control Test: StyledCard in a .astro page</h1>
+    <p>If the card below is styled, is:global works fine in .astro pages.</p>
+    <StyledCard title="I should be styled!">
+      This card should have a <strong>purple border</strong>, a <strong>gradient background</strong>, and a <strong>box shadow</strong>.
+    </StyledCard>
+  </body>
+</html>

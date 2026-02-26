@@ -1,0 +1,57 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<div class="styled-card">
+  <h3 class="styled-card__title">{title}</h3>
+  <div class="styled-card__body">
+    <slot />
+  </div>
+</div>
+
+<style is:global>
+  /*
+   * These styles use is:global intentionally to demonstrate
+   * a potential bug: styles defined in an Astro component that
+   * is imported and rendered by an MDX file may not be applied.
+   */
+  .styled-card {
+    border: 3px solid rebeccapurple;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    background: linear-gradient(135deg, #f5f0ff 0%, #e8daff 100%);
+    box-shadow: 0 4px 12px rgba(102, 51, 153, 0.15);
+  }
+
+  .styled-card__title {
+    margin: 0 0 0.75rem 0;
+    color: rebeccapurple;
+    font-size: 1.4rem;
+    border-bottom: 2px dashed rebeccapurple;
+    padding-bottom: 0.5rem;
+  }
+
+  .styled-card__body {
+    color: #333;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .styled-card__body p {
+    margin: 0.5rem 0;
+  }
+
+  /* Canary: if global styles are injected, this text will appear */
+  .styled-card::after {
+    content: "GLOBAL_STYLES_APPLIED";
+    display: block;
+    margin-top: 1rem;
+    font-weight: bold;
+    color: green;
+  }
+</style>

@@ -1,0 +1,21 @@
+---
+title: 'MDX Style Bug Reproduction'
+description: 'Demonstrates a potential bug with is:global styles in Astro components imported by MDX'
+pubDate: 'Feb 26 2026'
+---
+
+import StyledCard from '../../components/StyledCard.astro';
+
+# Style Bug Reproduction
+
+The component below is an Astro component (`StyledCard.astro`) that uses `<style is:global>` to define its styles. If the styles are missing, this confirms the bug.
+
+<StyledCard title="I should be styled!">
+  This card should have a **purple border**, a **gradient background**, and a **box shadow**.
+  If you're seeing plain unstyled text, the `is:global` styles from the Astro component were not injected.
+</StyledCard>
+
+## What to check
+
+1. Does the card above have a purple border and gradient background?
+2. Inspect the page source — are the global styles present in the HTML?
