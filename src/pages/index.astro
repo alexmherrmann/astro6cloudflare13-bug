@@ -1,22 +1,33 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 
-const articles = await getCollection('articles');
+const articles = await getCollection("articles");
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<title>Bug Repro</title>
-	</head>
-	<body>
-		<h1>Articles</h1>
-		<ul>
-			{articles.map((article) => (
-				<li>
-					<a href={`/articles/${article.id}`}>{article.data.title}</a>
-				</li>
-			))}
-		</ul>
-	</body>
+    <head>
+        <meta charset="utf-8" />
+        <title>Articles</title>
+    </head>
+    <body>
+        <h1>pages</h1>
+        <ul>
+            <li>
+                <a href="/mdx-direct-test"
+                    >.astro in and MDX but NOT part of a content collection</a>
+            </li>
+        </ul>
+        <h1>(Bug reproduction) Articles</h1>
+        <ul>
+            {
+                articles.map((article) => (
+                    <li>
+                        <a href={`/articles/${article.id}`}>
+                            {article.data.title}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </body>
 </html>
